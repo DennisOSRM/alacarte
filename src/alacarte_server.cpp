@@ -192,10 +192,10 @@ protected:
 	 *
 	 * @param config the configuration for the application
 	 **/
-	virtual void onRun( const shared_ptr<Configuration>& config ) 
+	virtual void onRun( const shared_ptr<Configuration>& config )
 	{
-		
-		
+		Statistic::Init(config);
+
 		shared_ptr<Geodata> geodata = make_shared<Geodata>();
 		try {
 			geodata->load(config->get<string>(opt::server::path_to_geodata));
@@ -224,7 +224,6 @@ protected:
 		req_manager->stop();
 
 		ssm->stopStylesheetObserving();
-		
 	}
 
 };
